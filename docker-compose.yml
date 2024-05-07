@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:unstable
+    container_name: jellyfin
+    user: uid:gid
+    network_mode: 'host'
+    volumes:
+      - C:/Users/Administrator.DATA01/Desktop/jellyfin/config : /config
+      - C:/Users/Administrator.DATA01/Desktop/jellyfin/cache  : /cache
+      
