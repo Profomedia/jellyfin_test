@@ -1,11 +1,22 @@
-version: '3.5'
 services:
   jellyfin:
-    image: jellyfin/jellyfin:unstable
+    image: jellyfin/jellyfin
     container_name: jellyfin
-    user: uid:gid
-    network_mode: 'host'
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Africa/Nairobi
     volumes:
-      - C:/Users/Administrator.DATA01/Desktop/jellyfin/config : /config
-      - C:/Users/Administrator.DATA01/Desktop/jellyfin/cache  : /cache
-      
+      - C:/Users/Administrator.DATA01/Desktop/jellyfin:/config
+      - C:/Users/Administrator.DATA01/Desktop/jellyfin:/cache
+      - C:/Users/data01/Desktop/Mark/Torrents/Movies:/movies
+      - C:/Users/data01/Desktop/Mark/Torrents/Series:/series
+    ports:
+      - 8096:8096
+    restart: 'unless-stopped'
+
+
+    # for more detail visit
+    #   - https://hub.docker.com/r/linuxserver/jellyfin
+    #   - https://jellyfin.org/docs/general/installation/container/
+    
